@@ -45,7 +45,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _targetVelocity = new Vector3(_input.x, 0, _input.y) * (_baseSpeed + _dexterityMultiplier * _dexterity.CurrentValue);
+        _targetVelocity = new Vector3(_input.x, 0, _input.y) * (_baseSpeed + _dexterityMultiplier * _dexterity.Value);
         _input = Vector2.zero;
         _body.velocity = Vector3.Lerp(_body.velocity, _targetVelocity, _acceleration * Time.fixedTime);
         

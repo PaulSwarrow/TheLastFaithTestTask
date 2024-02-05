@@ -3,7 +3,7 @@
     public interface ICharacterStat
     {
         string Label { get; }
-        int CurrentValue { get; }
+        int Value { get; }
         int MaxValue { get; }
     }
 }

@@ -1,16 +1,40 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DefaultNamespace.Model
 {
-    /// <summary>
-    /// Characte facade for all in-game interactions
-    /// </summary>
-    public class CharacterEntity : MonoBehaviour
+    [RequireComponent(typeof(CharacterStats))]
+    public class CharacterEntity : MonoBehaviour, IGameEntity
     {
+        private CharacterStats _stats;
         private void Awake()
         {
-            
+            _stats = GetComponent<CharacterStats>();
         }
+
+        private void OnEnable()
+        {
+            _stats.Subscribe(StatId.Health, OnHealthChange);
+        }
+
+        private void OnDisable()
+        {
+            _stats.Unsubscribe(StatId.Health, OnHealthChange);
+        }
+
+        public void ReceiveDamage(int amount)
+        {
+            _stats.ChangeValue(StatId.Health, amount);
+        }
+
+        private void OnHealthChange(StatId id, int oldvalue, int newvalue)
+        {
+            if (newvalue <= 0)
+            {
+                //Death
+            }
+        }
+
     }
 }
