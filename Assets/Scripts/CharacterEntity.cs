@@ -8,8 +8,6 @@ namespace DefaultNamespace.Model
     /// </summary>
     public class CharacterEntity : MonoBehaviour
     {
-        
-
         private void Awake()
         {
             

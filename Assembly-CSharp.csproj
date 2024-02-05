@@ -41,14 +41,22 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CharacterInput.cs" />
-    <Compile Include="Assets\Scripts\CharacterStats.cs" />
+    <Compile Include="Assets\Scripts\Components\CharacterInput.cs" />
+    <Compile Include="Assets\Scripts\Components\CharacterStats.cs" />
     <Compile Include="Assets\Scripts\Model\ICharacterStat.cs" />
     <Compile Include="Assets\Scripts\Model\StatId.cs" />
     <Compile Include="Assets\Scripts\Model\CharacterStatSpec.cs" />
-    <Compile Include="Assets\Scripts\Model\CharacterEntity.cs" />
-    <Compile Include="Assets\Scripts\CharacterMovement.cs" />
+    <Compile Include="Assets\Scripts\CharacterEntity.cs" />
+    <Compile Include="Assets\Scripts\Components\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Model\CharacterStatModel.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IGameEntity.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IEntityStatus.cs" />
+    <Compile Include="Assets\Scripts\Components\ProjectileComponent.cs" />
+    <Compile Include="Assets\Scripts\GameUtils.cs" />
+    <Compile Include="Assets\Scripts\Managers\ProjectilesManager.cs" />
+    <Compile Include="Assets\Scripts\Model\ProjectileSpec.cs" />
+    <Compile Include="Assets\Scripts\Components\ProjectileLauncherComponent.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IAttackBehavior.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.34f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

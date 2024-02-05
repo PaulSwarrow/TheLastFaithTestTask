@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace.Model;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -7,10 +8,12 @@ namespace DefaultNamespace
     public class CharacterInput : MonoBehaviour
     {
         private CharacterMovement _movement;
+        private IAttackBehavior _attack;
 
         private void Awake()
         {
             _movement = GetComponent<CharacterMovement>();
+            _attack = GetComponent<IAttackBehavior>();
         }
 
         private void Update()
@@ -23,9 +26,12 @@ namespace DefaultNamespace
             mouseScreenPosition.z = cam.transform.position.y;
             var mouseWorldPosition = cam.ScreenToWorldPoint(mouseScreenPosition);
             var direction = mouseWorldPosition - transform.position;
-            
             _movement.LookDirection(new Vector2(direction.x, direction.z));
-            
+
+            if (Input.GetButton("Fire1"))
+            {
+                _attack?.Attack();
+            }
             
         }
     }
