@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.Model;
 using UnityEngine;
 
 namespace Managers
@@ -23,35 +23,48 @@ namespace Managers
             }
         }
 
-        private bool _pause;
+        private bool _gameOver;
+        private bool _menu;
         public float GameTime { get; private set; }
-        public float GameDeltaTime => _pause ? 0 : Time.deltaTime;
-        public bool Pause => _pause;
+        public float GameDeltaTime => Pause ? 0 : Time.deltaTime;
+        public bool Pause => _menu || _gameOver;
 
         [SerializeField] private GameConfig _config;
         [SerializeField] private GameObject _pauseMenu;
+        [SerializeField] private GameObject _gameoverScreen;
+
+        [SerializeField] private CharacterEntity _player;
 
         private void Awake()
         {
             _instance = this;
-            UpdatePauseState();
+            UpdateMenuState();
+            _gameoverScreen.SetActive(false);
+            _player.DeathEvent += OnPlayerDie;
         }
 
         private void Update()
         {
-            if (!_pause)
+            if (!Pause)
                 GameTime += Time.deltaTime;
-            
-            if (Input.GetKeyDown(KeyCode.Escape))
+
+            if (Input.GetKeyDown(KeyCode.Escape) && !_gameOver)
             {
-                _pause = !_pause;
-                UpdatePauseState();
+                _menu = !_menu;
+                UpdateMenuState();
             }
         }
 
-        private void UpdatePauseState()
+        private void UpdateMenuState()
         {
-            _pauseMenu.SetActive(_pause);
+            _pauseMenu.SetActive(_menu);
+        }
+
+        private void OnPlayerDie(CharacterEntity obj)
+        {
+            _gameOver = true;
+            _gameoverScreen.SetActive(true);
+            
         }
 
         public int GetUpgradeCost(int currentLevel)
@@ -62,7 +75,7 @@ namespace Managers
         public IEnumerator WaitForGameSeconds(float seconds)
         {
             var a = GameTime;
-            yield return new WaitUntil(() => GameManager.Instance.GameTime - a >= seconds);
+            yield return new WaitUntil(() => Instance.GameTime - a >= seconds);
         }
     }
 }
