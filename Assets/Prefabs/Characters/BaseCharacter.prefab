@@ -199,14 +199,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats:
   - _id: 0
-    _value: 1
+    _value: 0
   - _id: 1
-    _value: 1
+    _value: 0
   - _id: 2
-    _value: 1
+    _value: 0
   _health:
     _id: 3
-    _limitStat: 0
+    _baseLimit: 100
+    _limitAmplifier: 0
   _speed:
     _id: 4
     _baseValue: 10
@@ -214,7 +215,7 @@ MonoBehaviour:
     _improvementRate: 1
   _damage:
     _id: 5
-    _baseValue: 1
+    _baseValue: 10
     _improvedBy: 1
     _improvementRate: 1
 --- !u!114 &227841606232868592

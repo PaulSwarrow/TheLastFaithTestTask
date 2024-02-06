@@ -14,7 +14,7 @@ namespace Utils
             _y = transform.position.y;
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             var targetPosition = new Vector3(_target.position.x, _y, _target.position.z);
             transform.position = Vector3.Lerp(transform.position, targetPosition, _easing * Time.deltaTime);

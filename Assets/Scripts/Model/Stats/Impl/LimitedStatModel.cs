@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DefaultNamespace.Model.Impl
 {
     [Serializable]
     public class LimitedStatModel : DynamicStatModel, IWritableEntityStat
     {
-        [SerializeField] private StatId _limitStat;
+        [SerializeField] private int _baseLimit = 100;
+        [SerializeField] private StatId _limitAmplifier;
         private IEntityStat _limit;
         
 
         public override void Init(Dictionary<StatId, IEntityStat> stats)
         {
-            _limit = stats[_limitStat];
-            Value = _limit.Value;
+            _limit = stats[_limitAmplifier];
+            Value = MaxValue;
             _limit.ChangeEvent += OnMaxValueChange;
         }
         public override void Destroy()
@@ -28,6 +30,6 @@ namespace DefaultNamespace.Model.Impl
             Value = Mathf.Min(Value, MaxValue);
         }
         
-        public override int MaxValue => _limit.Value;
+        public override int MaxValue => _baseLimit + _limit.Value;
     }
 }

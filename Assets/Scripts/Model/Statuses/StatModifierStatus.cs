@@ -39,7 +39,7 @@ namespace DefaultNamespace.Model.Statuses
         public int Value => _modifier;
         public int GetModificator(int baseValue)
         {
-            return baseValue * Mathf.RoundToInt(_modifier / 100f);
+            return Mathf.RoundToInt(baseValue * _modifier / 100f);
         }
     }
 }
