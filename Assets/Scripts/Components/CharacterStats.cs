@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DefaultNamespace.Model;
+using DefaultNamespace.Model.Impl;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -8,20 +9,48 @@ namespace DefaultNamespace
     public class CharacterStats : MonoBehaviour
     {
         public delegate void StatChangeDelegate(StatId id, int oldValue, int newValue);
-        [SerializeField] private CharacterStatModel[] _stats;
 
-        private Dictionary<StatId, CharacterStatModel> _map;
+        [SerializeField] private SimpleEntityStatModel[] _stats;
+
+        //TODO: more flexible configuration(as a list of different stats, custom inspector needed)
+        [SerializeField] private LimitedStatModel _health;
+        [SerializeField] private FunctionStatModel _speed;
+        [SerializeField] private FunctionStatModel _damage;
+
+
+        private Dictionary<StatId, IEntityStat> _map;
+        private DynamicStatModel[] _dynamicStats;
 
         private void LazyInit()
         {
-            if(_map!=null) return;
+            if (_map != null) return;
             _map = new();
             foreach (var model in _stats)
             {
                 _map.Add(model.Id, model);
             }
+
+            _dynamicStats = new DynamicStatModel[] { _health, _speed, _damage };
+
+            foreach (var model in _dynamicStats)
+            {
+                //assumption: dynamic stats can not depend on each other!
+                model.Init(_map);
+                _map.Add(model.Id, model);
+            }
         }
-        
+
+        private void OnDestroy()
+        {
+            if (_map != null)
+            {
+                foreach (var model in _dynamicStats)
+                {
+                    model.Destroy();
+                }
+            }
+        }
+
 
         public void Subscribe(StatId id, StatChangeDelegate handler)
         {
@@ -29,7 +58,6 @@ namespace DefaultNamespace
             {
                 stat.ChangeEvent += handler;
             }
-
         }
 
         public void Unsubscribe(StatId id, StatChangeDelegate handler)
@@ -38,10 +66,9 @@ namespace DefaultNamespace
             {
                 stat.ChangeEvent -= handler;
             }
-            
         }
 
-        public ICharacterStat Get(StatId id)
+        public IEntityStat Get(StatId id)
         {
             if (TryGetValue(id, out var stat))
             {
@@ -52,15 +79,15 @@ namespace DefaultNamespace
             throw new Exception($"Stat not found: {id}");
         }
 
-        public void ChangeValue(StatId stat, int delta)
+        public void ChangeValue(StatId statId, int delta)
         {
-            if (TryGetValue(stat, out var statInfo))
+            if (TryGetValue(statId, out var stat) && stat is IWritableEntityStat writable)
             {
-                statInfo.Value += delta;
+                writable.Value += delta;
             }
         }
 
-        private bool TryGetValue(StatId id, out CharacterStatModel stat)
+        private bool TryGetValue(StatId id, out IEntityStat stat)
         {
             LazyInit();
             return _map.TryGetValue(id, out stat);

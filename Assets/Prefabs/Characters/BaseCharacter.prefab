@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c7724d8a34f364ebd560b10d1f6a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseSpeed: 1
-  _dexterityMultiplier: 0.5
+  _speedStat: 0
+  _speedMultiplier: 0.01
   _acceleration: 10
   _angularAcceleration: 10
   _input: {x: 0, y: 0}
@@ -182,14 +182,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats:
   - _id: 0
-    _value: 10
-    _maxValue: 0
+    _value: 1
   - _id: 1
-    _value: 10
-    _maxValue: 0
+    _value: 1
   - _id: 2
-    _value: 10
-    _maxValue: 0
+    _value: 1
+  _health:
+    _id: 3
+    _limitStat: 0
+  _speed:
+    _id: 4
+    _baseValue: 10
+    _improvedBy: 2
+    _improvementRate: 1
+  _damage:
+    _id: 5
+    _baseValue: 1
+    _improvedBy: 1
+    _improvementRate: 1
 --- !u!114 &227841606232868592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,12 +212,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d982881590d49c5a8bcc19ec5244dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageStat: 5
+  _projectileVelocity: 10
+  _projectileLifespan: 5
+  _projectileRadius: 0.1
   _spawnPoint: {fileID: 8198490442628997440}
-  _baseProjectile:
-    Damage: 1
-    Velocity: 10
-    Lifespan: 5
-    Radius: 0.2
+  _cooldown: 0.1
 --- !u!1 &2966505044740396591
 GameObject:
   m_ObjectHideFlags: 0

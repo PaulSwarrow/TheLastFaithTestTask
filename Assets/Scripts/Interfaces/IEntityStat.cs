@@ -1,9 +1,11 @@
 ﻿namespace DefaultNamespace.Model
 {
-    public interface ICharacterStat
+    public interface IEntityStat
     {
+        public event CharacterStats.StatChangeDelegate ChangeEvent;
         string Label { get; }
         int Value { get; }
+        StatId Id { get; }
         int MaxValue { get; }
     }
 }

@@ -4,13 +4,27 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
+    [RequireComponent(typeof(CharacterStats))]
     public class ProjectileLauncherComponent : MonoBehaviour, IAttackBehavior
     {
+        [SerializeField] private StatId _damageStat;
+        [SerializeField] private float _projectileVelocity = 10;
+        [SerializeField] private int _projectileLifespan = 5;
+        [SerializeField] private float _projectileRadius = 0.1f;
         [SerializeField] private Transform _spawnPoint;
-        [SerializeField] private ProjectileSpec _baseProjectile;
         [SerializeField] private float _cooldown = 0.1f;
 
+        private CharacterStats _stats;
+        private IEntityStat _damage;
+
+        private void Awake()
+        {
+            _stats = GetComponent<CharacterStats>();
+            _damage = _stats.Get(_damageStat);
+        }
+
         private float _lastAttack;
+
         public void Attack()
         {
             if (Time.time - _lastAttack < _cooldown)
@@ -19,8 +33,14 @@ namespace DefaultNamespace
             }
 
             _lastAttack = Time.time;
-            
-            var spec = _baseProjectile;
+
+            var spec = new ProjectileSpec()
+            {
+                Damage = _damage.Value,
+                Lifespan = _projectileLifespan,
+                Radius = _projectileRadius,
+                Velocity = _projectileVelocity
+            };
             //TODO modify projectile
             ProjectilesManager.Instance.SpawnProjectile(spec, _spawnPoint.position, _spawnPoint.forward);
         }
