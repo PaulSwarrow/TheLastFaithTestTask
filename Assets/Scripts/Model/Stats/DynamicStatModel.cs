@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Components;
+using Interfaces;
 using UnityEngine;
 
-namespace DefaultNamespace.Model
+namespace Model.Stats
 {
     [Serializable]
     public abstract class DynamicStatModel : IEntityStat, IDestroyable

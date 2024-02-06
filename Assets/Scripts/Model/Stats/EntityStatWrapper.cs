@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Components;
+using Interfaces;
 using UnityEngine;
 
-namespace DefaultNamespace.Model
+namespace Model.Stats
 {
     public class EntityStatWrapper : IEntityStat, IDestroyable
     {

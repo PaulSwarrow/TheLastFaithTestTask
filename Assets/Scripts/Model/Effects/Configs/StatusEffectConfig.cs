@@ -1,10 +1,8 @@
-﻿using DefaultNamespace;
-using DefaultNamespace.Model;
-using DefaultNamespace.Model.Statuses;
+﻿using Components;
+using Model.Statuses;
 using UnityEngine;
-using Color = System.Drawing.Color;
 
-namespace Configs
+namespace Model.Effects.Configs
 {
     [CreateAssetMenu(menuName = "Game/Status Effect")]
     public class StatusEffectConfig : EffectConfig

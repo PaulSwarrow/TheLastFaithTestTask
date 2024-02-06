@@ -1,7 +1,9 @@
 ﻿using System;
+using Components;
+using Interfaces;
 using UnityEngine;
 
-namespace DefaultNamespace.Model
+namespace Model.Stats
 {
     [Serializable]
     public class SimpleEntityStatModel : IWritableEntityStat

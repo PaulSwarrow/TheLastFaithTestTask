@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.Model
+namespace Interfaces
 {
     public interface IStatModifier
     {

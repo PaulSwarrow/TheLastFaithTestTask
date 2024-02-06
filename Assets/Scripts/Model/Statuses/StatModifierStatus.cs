@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using Components;
+using Interfaces;
+using UnityEngine;
 
-namespace DefaultNamespace.Model.Statuses
+namespace Model.Statuses
 {
     public class StatModifierStatus : IEntityStatus, IStatModifier
     {

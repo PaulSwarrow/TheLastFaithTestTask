@@ -1,7 +1,9 @@
 ﻿
+using Components;
+using Model;
 using UnityEngine;
 
-namespace DefaultNamespace.Model
+namespace Interfaces
 {
     public interface IEntityStat
     {

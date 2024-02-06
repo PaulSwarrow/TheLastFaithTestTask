@@ -1,6 +1,7 @@
 ﻿using System;
-using DefaultNamespace;
-using DefaultNamespace.Model;
+using Components;
+using Interfaces;
+using Model;
 using TMPro;
 using UnityEngine;
 
