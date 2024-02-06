@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DefaultNamespace.Model;
 using DefaultNamespace.Model.Impl;
+using DefaultNamespace.Model.Statuses;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -19,24 +20,36 @@ namespace DefaultNamespace
 
 
         private Dictionary<StatId, IEntityStat> _map;
-        private DynamicStatModel[] _dynamicStats;
+        private Dictionary<StatId, EntityStatWrapper> _wrappers;
+        private List<IDestroyable> _destroyables;
 
         private void LazyInit()
         {
             if (_map != null) return;
             _map = new();
+            _wrappers = new();
+            _destroyables = new();
             foreach (var model in _stats)
             {
                 _map.Add(model.Id, model);
             }
 
-            _dynamicStats = new DynamicStatModel[] { _health, _speed, _damage };
-
-            foreach (var model in _dynamicStats)
+            //TODO: generate this list dynamically
+            var dynamic = new DynamicStatModel[] { _health, _speed, _damage };
+            foreach (var model in dynamic)
             {
                 //assumption: dynamic stats can not depend on each other!
                 model.Init(_map);
                 _map.Add(model.Id, model);
+                _destroyables.Add(model);
+            }
+
+            foreach (var model in _map.Values)
+            {
+                var wrapper = new EntityStatWrapper(model);
+                _wrappers.Add(model.Id, wrapper);
+                _destroyables.Add(wrapper);
+                
             }
         }
 
@@ -44,7 +57,7 @@ namespace DefaultNamespace
         {
             if (_map != null)
             {
-                foreach (var model in _dynamicStats)
+                foreach (var model in _destroyables)
                 {
                     model.Destroy();
                 }
@@ -54,7 +67,7 @@ namespace DefaultNamespace
 
         public void Subscribe(StatId id, StatChangeDelegate handler)
         {
-            if (TryGetValue(id, out var stat))
+            if (TryGetValue<IEntityStat>(id, false, out var stat))
             {
                 stat.ChangeEvent += handler;
             }
@@ -62,7 +75,7 @@ namespace DefaultNamespace
 
         public void Unsubscribe(StatId id, StatChangeDelegate handler)
         {
-            if (TryGetValue(id, out var stat))
+            if (TryGetValue<IEntityStat>(id,false, out var stat))
             {
                 stat.ChangeEvent -= handler;
             }
@@ -70,7 +83,7 @@ namespace DefaultNamespace
 
         public IEntityStat Get(StatId id)
         {
-            if (TryGetValue(id, out var stat))
+            if (TryGetValue<IEntityStat>(id, true, out var stat))
             {
                 return stat;
             }
@@ -79,18 +92,61 @@ namespace DefaultNamespace
             throw new Exception($"Stat not found: {id}");
         }
 
-        public void ChangeValue(StatId statId, int delta)
+        public void AddModifier(StatId id, IStatModifier modifier)
         {
-            if (TryGetValue(statId, out var stat) && stat is IWritableEntityStat writable)
+            if(TryGetValue<EntityStatWrapper>(id, true, out var wrapper))
             {
-                writable.Value += delta;
+                wrapper.AddModifier(modifier);
             }
         }
 
-        private bool TryGetValue(StatId id, out IEntityStat stat)
+        public void RemoveModifier(StatId id, IStatModifier modifier)
+        {
+            if(TryGetValue<EntityStatWrapper>(id, true, out var wrapper))
+            {
+                wrapper.RemoveModifier(modifier);
+            }
+        }
+
+        public IEntityStat GetPureStat(StatId id)
+        {
+            if (TryGetValue<IEntityStat>(id, true, out var stat))
+            {
+                return stat;
+            }
+
+            //TODO returning dummy stat with 0/0 values may be better solution in some cases
+            throw new Exception($"Stat not found: {id}");
+            
+        }
+
+        public void ChangeValue(StatId statId, int delta)
+        {
+            //Note: only base stats change is supported. Stat Modifiers can not be affected externally
+            //To implement "extended health" effect there should be complex effect: amplify Vitality + heal up to new MaxValue
+            if (TryGetValue<IWritableEntityStat>(statId, false, out var stat))
+            {
+                stat.Value += delta;
+            }
+        }
+
+        private bool TryGetValue<T>(StatId id, bool wrappers, out T stat) where T: IEntityStat
         {
             LazyInit();
-            return _map.TryGetValue(id, out stat);
+            if (wrappers && _wrappers.TryGetValue(id, out var wrapper) && wrapper is T wrapperT)
+            {
+                stat = wrapperT;
+                return true;
+            }
+
+            if (_map.TryGetValue(id, out var model) && model is T modelT)
+            {
+                stat = modelT;
+                return true;
+            }
+
+            stat = default;
+            return false;
         }
     }
 }

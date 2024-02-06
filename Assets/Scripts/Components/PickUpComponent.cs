@@ -26,6 +26,9 @@ namespace DefaultNamespace
             {
                 entity.ApplyEffect(_config);
             }
+            //TODO pools!
+            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

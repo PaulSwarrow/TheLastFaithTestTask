@@ -729,7 +729,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _variants:
+  - {fileID: 11400000, guid: f40b2edf2bcdc4d42be7b43d36117af6, type: 2}
   - {fileID: 11400000, guid: 1c9c441794c2b3a42b96580c5a60edf6, type: 2}
+  - {fileID: 11400000, guid: 4b0a5971bafe3c74fadaa5b2cf740f65, type: 2}
   _containerPrefab: {fileID: 6169528386288024173, guid: 3a99d3e1aeaa1d9489b04fd85b0d98d9, type: 3}
 --- !u!1001 &2622019512637156129
 PrefabInstance:

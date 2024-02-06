@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DefaultNamespace.Model
 {
     [RequireComponent(typeof(CharacterStats))]
+    [RequireComponent(typeof(StatusHandlerComponent))]
     public class CharacterEntity : MonoBehaviour, IGameEntity
     {
         [SerializeField]//TODO move pick up feature to a dedicated component 
@@ -13,9 +13,11 @@ namespace DefaultNamespace.Model
         private bool _destroyOnDeath;
         public event Action<CharacterEntity> DeathEvent; 
         private CharacterStats _stats;
+        private StatusHandlerComponent _statusHandler;
         private void Awake()
         {
             _stats = GetComponent<CharacterStats>();
+            _statusHandler = GetComponent<StatusHandlerComponent>();
         }
 
         private void OnEnable()
@@ -42,7 +44,7 @@ namespace DefaultNamespace.Model
 
         public void ApplyEffect(IEntityEffect effect)
         {
-            effect.Apply(_stats);
+            effect.Apply(_stats, _statusHandler);
         }
 
         private void OnHealthChange(StatId id, int oldvalue, int newvalue)

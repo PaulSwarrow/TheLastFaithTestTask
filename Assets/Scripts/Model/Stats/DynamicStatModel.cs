@@ -5,7 +5,7 @@ using UnityEngine;
 namespace DefaultNamespace.Model
 {
     [Serializable]
-    public abstract class DynamicStatModel : IEntityStat
+    public abstract class DynamicStatModel : IEntityStat, IDestroyable
     {
         public abstract void Init(Dictionary<StatId, IEntityStat> stats);
 

@@ -99,6 +99,8 @@ GameObject:
   - component: {fileID: 5310388241596574237}
   - component: {fileID: -7083175665104879997}
   - component: {fileID: 227841606232868592}
+  - component: {fileID: 5953088683240182478}
+  - component: {fileID: 1388052835899287430}
   m_Layer: 0
   m_Name: BaseCharacter
   m_TagString: Untagged
@@ -164,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a60e46d89044e79b48ce9d47407932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canPickUp: 0
+  _destroyOnDeath: 0
 --- !u!114 &5310388241596574237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c7724d8a34f364ebd560b10d1f6a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedStat: 0
+  _speedStat: 4
   _speedMultiplier: 0.5
   _acceleration: 10
   _angularAcceleration: 10
@@ -231,6 +235,30 @@ MonoBehaviour:
   _projectileRadius: 0.1
   _spawnPoint: {fileID: 8198490442628997440}
   _cooldown: 0.5
+--- !u!114 &5953088683240182478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876082482174077111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388c63ac528e43c1878bcb24e0bae343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1388052835899287430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876082482174077111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388c63ac528e43c1878bcb24e0bae343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2966505044740396591
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,6 @@
 {
     public interface IEntityEffect
     {
-        void Apply(CharacterStats stats);
+        void Apply(CharacterStats stats, StatusHandlerComponent statusHandler);
     }
 }

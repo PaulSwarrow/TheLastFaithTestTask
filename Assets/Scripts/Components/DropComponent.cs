@@ -13,6 +13,7 @@ namespace DefaultNamespace
         private void Awake()
         {
             _character = GetComponent<CharacterEntity>();
+            
         }
 
         private void OnEnable()
@@ -27,7 +28,7 @@ namespace DefaultNamespace
 
         private void OnDeath(CharacterEntity obj)
         {
-            if (Random.value > _dropChance)
+            if (Random.value < _dropChance)
             {
                 //TODO provide drop spec
                 DropMaqnager.Instance.SpawnEnemyDrop(transform.position);
