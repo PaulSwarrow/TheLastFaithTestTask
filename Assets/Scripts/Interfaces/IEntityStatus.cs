@@ -1,6 +1,6 @@
 ﻿namespace DefaultNamespace.Model
 {
-    public interface IEntityStatus
+    public interface IEntityStatus : IEntityStatusInfo
     {
         void Init(CharacterStats stats);
 
@@ -8,5 +8,7 @@
         void Dispose();
         
         bool IsFinished { get; }
+
+        bool HasConflict(IEntityStatus other);
     }
 }

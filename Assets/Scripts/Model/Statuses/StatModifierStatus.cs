@@ -11,11 +11,12 @@ namespace DefaultNamespace.Model.Statuses
         private float _lifeTime;
         private CharacterStats _target;
 
-        public StatModifierStatus(StatId id, int lifespan, int modifier)
+        public StatModifierStatus(StatId id, int lifespan, int modifier, string label)
         {
             _id = id;
             _lifespan = lifespan;
             _modifier = modifier;
+            Label = label;
         }
 
         public void Init(CharacterStats stats)
@@ -34,12 +35,19 @@ namespace DefaultNamespace.Model.Statuses
             _target.RemoveModifier(_id, this);
         }
 
-        public bool IsFinished => _lifeTime > _lifespan;
+        public bool IsFinished => TimeLeft <= 0;
+        public bool HasConflict(IEntityStatus other)
+        {
+            return other is StatModifierStatus statModifier && statModifier._id == _id;
+        }
 
         public int Value => _modifier;
         public int GetModificator(int baseValue)
         {
             return Mathf.RoundToInt(baseValue * _modifier / 100f);
         }
+
+        public string Label { get; }
+        public float TimeLeft => _lifespan - _lifeTime;
     }
 }

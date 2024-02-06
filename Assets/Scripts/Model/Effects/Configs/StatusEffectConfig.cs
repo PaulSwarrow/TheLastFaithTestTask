@@ -15,9 +15,11 @@ namespace Configs
         [SerializeField, Range(0, 100)]
         private int _modifier;
 
+        [SerializeField] private string _label;
+
         public override void Apply(CharacterStats stats, StatusHandlerComponent statusHandler)
         {
-            var status = new StatModifierStatus(_id, _lifespan, _modifier);
+            var status = new StatModifierStatus(_id, _lifespan, _modifier, _label);
             statusHandler.AddStatus(status);
         }
     }
