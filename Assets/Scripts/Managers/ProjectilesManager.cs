@@ -23,12 +23,12 @@ namespace Managers
         }
 
 
-        public void SpawnProjectile(ProjectileSpec spec, Vector3 position, Vector3 direction)
+        public void SpawnProjectile(ProjectileSpec spec, Vector3 position, Vector3 direction, IGameEntity owner)
         {
             var projectile = _pool.Count > 0 ? _pool.Dequeue() : Instantiate(_projectilePrefab);
             projectile.transform.position = position;
             projectile.transform.forward = direction;
-            projectile.Spec = spec;
+            projectile.Init(spec, owner);
             projectile.LifetimeEndEvent += OnProjectileDie;
             projectile.gameObject.SetActive(true);
 

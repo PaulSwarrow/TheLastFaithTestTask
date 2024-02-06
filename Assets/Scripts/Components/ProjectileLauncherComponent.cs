@@ -14,11 +14,13 @@ namespace DefaultNamespace
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private float _cooldown = 0.1f;
 
+        private IGameEntity _owner;
         private CharacterStats _stats;
         private IEntityStat _damage;
 
         private void Awake()
         {
+            _owner = GetComponent<IGameEntity>();
             _stats = GetComponent<CharacterStats>();
             _damage = _stats.Get(_damageStat);
         }
@@ -42,7 +44,7 @@ namespace DefaultNamespace
                 Velocity = _projectileVelocity
             };
             //TODO modify projectile
-            ProjectilesManager.Instance.SpawnProjectile(spec, _spawnPoint.position, _spawnPoint.forward);
+            ProjectilesManager.Instance.SpawnProjectile(spec, _spawnPoint.position, _spawnPoint.forward, _owner);
         }
     }
 }

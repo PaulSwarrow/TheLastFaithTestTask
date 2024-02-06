@@ -316,6 +316,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1538928517681380195, guid: 6564689dfb7115241aa895b7c1374f00, type: 3}
+      propertyPath: _team
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538928517681380195, guid: 6564689dfb7115241aa895b7c1374f00, type: 3}
+      propertyPath: _killReward
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538928517681380195, guid: 6564689dfb7115241aa895b7c1374f00, type: 3}
       propertyPath: _destroyOnDeath
       value: 1
       objectReference: {fileID: 0}
