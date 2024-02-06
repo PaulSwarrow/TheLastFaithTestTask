@@ -231,8 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageStat: 5
-  _projectileVelocity: 10
-  _projectileLifespan: 5
+  _projectileVelocity: 20
+  _projectileLifespan: 2
   _projectileRadius: 0.1
   _spawnPoint: {fileID: 8198490442628997440}
   _cooldown: 0.5
