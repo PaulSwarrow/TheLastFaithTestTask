@@ -7,6 +7,9 @@ namespace DefaultNamespace.Model
     [RequireComponent(typeof(CharacterStats))]
     public class CharacterEntity : MonoBehaviour, IGameEntity
     {
+        [SerializeField] //TODO: characters lifecycle system, pools etc
+        private bool _destroyOnDeath;
+        public event Action<CharacterEntity> DeathEvent; 
         private CharacterStats _stats;
         private void Awake()
         {
@@ -37,7 +40,12 @@ namespace DefaultNamespace.Model
         {
             if (newvalue <= 0)
             {
-                //Death
+                DeathEvent?.Invoke(this);
+                if (_destroyOnDeath)
+                {
+                    gameObject.SetActive(false);
+                    Destroy(gameObject);
+                }
             }
         }
 
