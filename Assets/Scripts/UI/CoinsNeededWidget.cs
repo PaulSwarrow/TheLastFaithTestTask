@@ -28,16 +28,13 @@ namespace UI
         private void OnEnable()
         {
             _coins.ChangeEvent += OnStatUpdate;
-        }
-
-        private void Start()
-        {
+            _level.ChangeEvent += OnStatUpdate;
             UpdateView();
         }
-
         private void OnDisable()
         {
             _coins.ChangeEvent -= OnStatUpdate;
+            _level.ChangeEvent -= OnStatUpdate;
         }
 
         private void OnStatUpdate(StatId id, int oldvalue, int newvalue)

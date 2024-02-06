@@ -1,4 +1,5 @@
-﻿using Components;
+﻿using System;
+using Components;
 using Interfaces;
 using Managers;
 using Model;
@@ -33,6 +34,20 @@ namespace UI
         }
 
         private void OnEnable()
+        {
+            UpdateState();
+            _coins.ChangeEvent += OnStatUpdate;
+            _level.ChangeEvent += OnStatUpdate;
+        }
+
+        private void OnDisable()
+        {
+            _coins.ChangeEvent -= OnStatUpdate;
+            _level.ChangeEvent -= OnStatUpdate;
+            
+        }
+
+        private void OnStatUpdate(StatId id, int oldvalue, int newvalue)
         {
             UpdateState();
         }
