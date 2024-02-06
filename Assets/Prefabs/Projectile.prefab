@@ -98,10 +98,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  Spec:
-    Damage: 0
-    Velocity: 0
-    Lifespan: 0
-    Radius: 0
-  damage: 0
+    m_Bits: 1
