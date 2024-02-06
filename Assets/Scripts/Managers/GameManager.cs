@@ -1,8 +1,7 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using DefaultNamespace;
-using UI;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace Managers
 {
@@ -24,25 +23,46 @@ namespace Managers
             }
         }
 
+        private bool _pause;
+        public float GameTime { get; private set; }
+        public float GameDeltaTime => _pause ? 0 : Time.deltaTime;
+        public bool Pause => _pause;
+
         [SerializeField] private GameConfig _config;
         [SerializeField] private GameObject _pauseMenu;
+
         private void Awake()
         {
             _instance = this;
-            _pauseMenu.SetActive(false);
+            UpdatePauseState();
         }
 
         private void Update()
         {
+            if (!_pause)
+                GameTime += Time.deltaTime;
+            
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                _pauseMenu.SetActive(!_pauseMenu.activeSelf);
+                _pause = !_pause;
+                UpdatePauseState();
             }
+        }
+
+        private void UpdatePauseState()
+        {
+            _pauseMenu.SetActive(_pause);
         }
 
         public int GetUpgradeCost(int currentLevel)
         {
             return _config.BaseLevelCost + currentLevel * _config.LevelCostMultiplier;
+        }
+
+        public IEnumerator WaitForGameSeconds(float seconds)
+        {
+            var a = GameTime;
+            yield return new WaitUntil(() => GameManager.Instance.GameTime - a >= seconds);
         }
     }
 }

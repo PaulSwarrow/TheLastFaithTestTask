@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using DefaultNamespace.Model;
+using Managers;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
@@ -21,21 +20,20 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            
         }
 
         private IEnumerator Behavior()
         {
             while (true)
-            { 
+            {
                 float angle = Random.Range(0f, Mathf.PI * 2);
                 Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
                 _move.LookDirection(direction);
-                yield return new WaitForSeconds(Random.Range(1, 5));
+                yield return GameManager.Instance.WaitForGameSeconds(Random.Range(1, 5));
                 _attack?.Attack();
-                yield return new WaitForSeconds(Random.Range(1, 2));
-
+                yield return GameManager.Instance.WaitForGameSeconds(Random.Range(1, 2));
             }
         }
+        
     }
 }

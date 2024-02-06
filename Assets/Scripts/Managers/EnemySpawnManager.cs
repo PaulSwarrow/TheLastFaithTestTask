@@ -33,7 +33,7 @@ namespace Managers
                 {
                     Spawn();
                 }
-                yield return new WaitForSeconds(Random.Range(1, 2));
+                yield return GameManager.Instance.WaitForGameSeconds(Random.Range(1, 2));
             }
             
         }

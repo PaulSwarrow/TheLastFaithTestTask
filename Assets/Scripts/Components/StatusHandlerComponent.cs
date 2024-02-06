@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace.Model;
+using Managers;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -38,7 +39,7 @@ namespace DefaultNamespace
             for (int i = _statuses.Count - 1; i >= 0; i--)
             {
                 var status = _statuses[i];
-                status.Update(Time.deltaTime);
+                status.Update(GameManager.Instance.GameDeltaTime);
                 if (status.IsFinished)
                 {
                     status.Dispose();

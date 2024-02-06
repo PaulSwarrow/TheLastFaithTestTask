@@ -1,5 +1,6 @@
 ﻿using System;
 using DefaultNamespace.Model;
+using Managers;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -18,6 +19,7 @@ namespace DefaultNamespace
 
         private void Update()
         {
+            if(GameManager.Instance.Pause) return;
             var move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             _movement.MoveInput(move);
 

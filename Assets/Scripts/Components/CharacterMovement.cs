@@ -1,5 +1,6 @@
 using DefaultNamespace;
 using DefaultNamespace.Model;
+using Managers;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -18,6 +19,7 @@ public class CharacterMovement : MonoBehaviour
     private CharacterStats _stats;
     private IEntityStat _speed;
     private Vector2 _direction;
+    private Vector3 _velocity;
 
     private void Awake()
     {
@@ -45,9 +47,17 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.Pause)
+        {
+            _body.velocity = Vector3.zero;//TODO better pause handling or different character movement approach
+            _input = Vector2.zero;
+            return;
+        }
         _targetVelocity = new Vector3(_input.x, 0, _input.y) * (_speed.Value * _speedMultiplier);
         _input = Vector2.zero;
-        _body.velocity = Vector3.Lerp(_body.velocity, _targetVelocity, _acceleration * Time.fixedTime);
+        
+        _velocity = Vector3.Lerp(_velocity, _targetVelocity, _acceleration * Time.fixedTime);
+        _body.velocity = _velocity;
         
         var targetRotation = Quaternion.LookRotation(new Vector3(_direction.x, 0, _direction.y), Vector3.up);
         _body.rotation = Quaternion.Slerp(_body.rotation, targetRotation, _angularAcceleration * Time.fixedTime);
