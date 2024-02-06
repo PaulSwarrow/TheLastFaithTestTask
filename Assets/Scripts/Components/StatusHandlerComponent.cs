@@ -27,7 +27,7 @@ namespace DefaultNamespace
             foreach (var conflict in conflicts)
             {
                 conflict.Dispose();
-                _statuses.Remove(status);
+                _statuses.Remove(conflict);
             }
             _statuses.Add(status);
             ListUpdateEvent?.Invoke();
