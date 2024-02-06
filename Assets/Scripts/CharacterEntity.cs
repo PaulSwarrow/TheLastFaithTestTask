@@ -8,18 +8,21 @@ using UnityEngine;
 [RequireComponent(typeof(StatusHandlerComponent))]
 public class CharacterEntity : MonoBehaviour, IGameEntity
 {
-    [SerializeField]//TODO move pick up feature to a dedicated component 
+    [SerializeField] //TODO move pick up feature to a dedicated component 
     private bool _canPickUp;
+
     [SerializeField] //TODO: characters lifecycle system, pools etc
     private bool _destroyOnDeath;
-    [SerializeField]
-    private int _team;
+
+    [SerializeField] private int _team;
+
     [SerializeField] //TODO move kill rewards to a dedicated component
     private int _killReward;
-        
-    public event Action<CharacterEntity> DeathEvent; 
+
+    public event Action<CharacterEntity> DeathEvent;
     private CharacterStats _stats;
     private StatusHandlerComponent _statusHandler;
+
     private void Awake()
     {
         _stats = GetComponent<CharacterStats>();
@@ -83,5 +86,4 @@ public class CharacterEntity : MonoBehaviour, IGameEntity
             }
         }
     }
-
 }
