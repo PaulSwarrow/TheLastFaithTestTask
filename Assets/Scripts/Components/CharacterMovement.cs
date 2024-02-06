@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Components
 {
+    /// <summary>
+    /// Implements character's movement behavior
+    /// </summary>
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(CharacterStats))]
     public class CharacterMovement : MonoBehaviour

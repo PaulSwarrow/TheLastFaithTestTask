@@ -3,6 +3,12 @@ using UnityEngine;
 
 namespace Managers
 {
+    /// <summary>
+    /// Main game manager.
+    /// Implements play|pause behavior and UI calls
+    /// TODO: dependency injection
+    /// TODO: split behavior to avoid god-object
+    /// </summary>
     public class GameManager : MonoBehaviour
     {
         //TODO remove singleton, use Dependency Injection instead
@@ -62,7 +68,6 @@ namespace Managers
         {
             _gameOver = true;
             _gameoverScreen.SetActive(true);
-            
         }
 
         public int GetUpgradeCost(int currentLevel)

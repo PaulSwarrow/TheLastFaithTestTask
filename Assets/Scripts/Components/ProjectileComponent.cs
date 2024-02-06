@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Components
 {
+    /// <summary>
+    /// Projectile behavior. Applies damage on hit
+    /// </summary>
     public class ProjectileComponent : MonoBehaviour
     {
         public event Action<ProjectileComponent> LifetimeEndEvent;

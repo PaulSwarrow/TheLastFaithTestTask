@@ -19,8 +19,8 @@ namespace UI
             _owner = GetComponentInParent<CharacterHud>();
             //TODO use more secure interface
             _target = _owner.Target.GetComponent<StatusHandlerComponent>();
-            
         }
+
         private void OnEnable()
         {
             OnTargetUpdate();

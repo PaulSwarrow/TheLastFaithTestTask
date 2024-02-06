@@ -2,6 +2,9 @@
 
 namespace Interfaces
 {
+    /// <summary>
+    /// Common facade for any game entities
+    /// </summary>
     public interface IGameEntity
     {
         void ReceiveDamage(int amount, IGameEntity from);

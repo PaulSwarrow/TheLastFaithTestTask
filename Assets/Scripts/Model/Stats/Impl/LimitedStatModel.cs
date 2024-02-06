@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Model.Stats.Impl
 {
+    /// <summary>
+    /// Provides secondary stat behavior: limit by stat * multiplier
+    /// </summary>
     [Serializable]
     public class LimitedStatModel : DynamicStatModel, IWritableEntityStat
     {

@@ -8,6 +8,9 @@ using UnityEngine.Assertions;
 
 namespace Managers
 {
+    /// <summary>
+    /// Manages projectile spawning and pooling
+    /// </summary>
     public class ProjectilesManager : MonoBehaviour
     {
         //TODO remove singleton, use Dependency Injection instead

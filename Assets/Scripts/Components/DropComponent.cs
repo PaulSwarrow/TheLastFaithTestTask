@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Components
 {
+    /// <summary>
+    /// Add drop behavior: dead character will spawn some pick-ups
+    /// </summary>
     [RequireComponent(typeof(CharacterEntity))]
     public class DropComponent : MonoBehaviour
     {

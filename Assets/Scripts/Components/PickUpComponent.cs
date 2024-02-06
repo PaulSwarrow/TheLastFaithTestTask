@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Components
 {
+    /// <summary>
+    /// Makes object a pickable
+    /// Applies an effect when picked
+    /// </summary>
     public class PickUpComponent : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _icon;

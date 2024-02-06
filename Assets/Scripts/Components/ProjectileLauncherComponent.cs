@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Components
 {
+    /// <summary>
+    /// Gun Behavior: spawns projectiles on demand
+    /// </summary>
     [RequireComponent(typeof(CharacterStats))]
     public class ProjectileLauncherComponent : MonoBehaviour, IAttackBehavior
     {

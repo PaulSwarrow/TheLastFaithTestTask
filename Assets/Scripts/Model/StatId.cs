@@ -2,8 +2,12 @@
 {
     public enum StatId
     {
-        Vitality, Strength, Dexterity,
-        Health, Speed, Damage,
+        Vitality,
+        Strength,
+        Dexterity,
+        Health,
+        Speed,
+        Damage,
         Coins,
         Level
     }

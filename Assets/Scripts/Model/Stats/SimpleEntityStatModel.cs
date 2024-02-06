@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Model.Stats
 {
+    /// <summary>
+    /// Basic Stat implementation: value, maxValue + some additional info
+    /// </summary>
     [Serializable]
     public class SimpleEntityStatModel : IWritableEntityStat
     {
@@ -29,7 +32,7 @@ namespace Model.Stats
             }
         }
 
-        public virtual int MaxValue => _maxValue >=0? _maxValue : int.MaxValue;
+        public virtual int MaxValue => _maxValue >= 0 ? _maxValue : int.MaxValue;
         public Color BoostInfo => Color.white;
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Components
 {
+    /// <summary>
+    /// Provides dummy AI
+    /// </summary>
     [RequireComponent(typeof(CharacterMovement))]
     public class EnemyBehavior : MonoBehaviour
     {

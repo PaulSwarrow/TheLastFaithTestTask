@@ -1,24 +1,21 @@
-﻿using System;
-using Components;
+﻿using Components;
 using Interfaces;
 using Managers;
 using Model;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI
 {
     public class UpgradeWidget : MonoBehaviour
     {
-
         [SerializeField] private StatId _statId;
         [SerializeField] private TMP_Text _label;
         [SerializeField] private Slider _progress;
         [SerializeField] private Button _btn;
         [SerializeField] private TMP_Text _priceField;
-        
+
         private IEntityStat _stat;
         private IEntityStat _level;
         private IEntityStat _coins;

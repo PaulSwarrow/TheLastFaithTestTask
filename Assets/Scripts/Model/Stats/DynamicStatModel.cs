@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace Model.Stats
 {
+    /// <summary>
+    /// Base class for secondary stats. Secondary stats depend from basic
+    /// Different behaviors are implemented by inheritance
+    /// </summary>
     [Serializable]
     public abstract class DynamicStatModel : IEntityStat, IDestroyable
     {

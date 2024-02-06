@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace Components
 {
+    /// <summary>
+    /// Manages statuses on the character
+    /// </summary>
     [RequireComponent(typeof(CharacterStats))]
     public class StatusHandlerComponent : MonoBehaviour
     {

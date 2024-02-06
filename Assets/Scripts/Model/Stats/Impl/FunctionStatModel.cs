@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Model.Stats.Impl
 {
+    /// <summary>
+    /// Provides secondary stat behavior: calculate value by function: base + stat * multiplier
+    /// </summary>
     [Serializable]
     public class FunctionStatModel : DynamicStatModel
     {
@@ -13,7 +16,7 @@ namespace Model.Stats.Impl
         [SerializeField] private int _improvementRate;
 
         private IEntityStat _improveStat;
-        
+
         public override void Init(Dictionary<StatId, IEntityStat> stats)
         {
             _improveStat = stats[_improvedBy];
@@ -36,7 +39,7 @@ namespace Model.Stats.Impl
 
         private void UpdateValue()
         {
-            Value = _baseValue + (_improveStat.Value * _improvementRate); 
+            Value = _baseValue + (_improveStat.Value * _improvementRate);
         }
     }
 }

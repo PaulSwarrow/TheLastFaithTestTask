@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Components
 {
+    /// <summary>
+    /// Implements player input logic for the character
+    /// </summary>
     [RequireComponent(typeof(CharacterMovement))]
     public class CharacterInput : MonoBehaviour
     {

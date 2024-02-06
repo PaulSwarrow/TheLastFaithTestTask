@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Model.Statuses
 {
+    /// <summary>
+    /// Status that modifies some stat in the entity
+    /// </summary>
     public class StatModifierStatus : IEntityStatus, IStatModifier
     {
         private readonly StatId _id;

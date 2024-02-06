@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace Model.Stats
 {
+    /// <summary>
+    /// Wraps stat and stores stat modifiers.
+    /// Allows to manage modifiers safely and return to unmodified values when a modifier is removed
+    /// </summary>
     public class EntityStatWrapper : IEntityStat, IDestroyable
     {
         public event CharacterStats.StatChangeDelegate ChangeEvent;

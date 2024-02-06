@@ -8,6 +8,10 @@ using UnityEngine;
 
 namespace Components
 {
+    /// <summary>
+    /// Stores character's stats
+    /// Manages stats modifications
+    /// </summary>
     public class CharacterStats : MonoBehaviour
     {
         public delegate void StatChangeDelegate(StatId id, int oldValue, int newValue);
