@@ -1,5 +1,4 @@
-﻿using DefaultNamespace.Model;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UI
 {

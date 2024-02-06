@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using DefaultNamespace.Model;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

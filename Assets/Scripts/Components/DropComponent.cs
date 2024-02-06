@@ -1,8 +1,7 @@
-﻿using DefaultNamespace.Model;
-using Managers;
+﻿using Managers;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Components
 {
     [RequireComponent(typeof(CharacterEntity))]
     public class DropComponent : MonoBehaviour

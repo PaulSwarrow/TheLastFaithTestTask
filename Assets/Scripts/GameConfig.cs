@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+[CreateAssetMenu(menuName = "Game/Game Config")]
+public class GameConfig : ScriptableObject
 {
-    [CreateAssetMenu(menuName = "Game/Game Config")]
-    public class GameConfig : ScriptableObject
-    {
-        public int BaseLevelCost;
-        public int LevelCostMultiplier;
-    }
+    public int BaseLevelCost;
+    public int LevelCostMultiplier;
 }

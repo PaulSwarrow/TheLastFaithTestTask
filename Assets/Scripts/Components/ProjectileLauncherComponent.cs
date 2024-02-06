@@ -1,8 +1,9 @@
-﻿using DefaultNamespace.Model;
+﻿using Interfaces;
 using Managers;
+using Model;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Components
 {
     [RequireComponent(typeof(CharacterStats))]
     public class ProjectileLauncherComponent : MonoBehaviour, IAttackBehavior

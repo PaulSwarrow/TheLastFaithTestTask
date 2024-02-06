@@ -1,9 +1,8 @@
-﻿using DefaultNamespace;
-using DefaultNamespace.Model;
+﻿using Components;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Configs
+namespace Model.Effects.Configs
 {
     [CreateAssetMenu(menuName = "Game/Instant Effect")]
     public class InstantEffectConfig : EffectConfig

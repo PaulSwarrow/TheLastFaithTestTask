@@ -1,7 +1,8 @@
 ﻿using System;
-using DefaultNamespace;
-using DefaultNamespace.Model;
+using Components;
+using Interfaces;
 using Managers;
+using Model;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;

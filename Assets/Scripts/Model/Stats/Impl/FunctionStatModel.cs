@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace DefaultNamespace.Model.Impl
+namespace Model.Stats.Impl
 {
     [Serializable]
     public class FunctionStatModel : DynamicStatModel

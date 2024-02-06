@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using DefaultNamespace;
-using DefaultNamespace.Model;
+using Components;
+using Interfaces;
+using Model;
 using UnityEngine;
 using UnityEngine.Assertions;
 

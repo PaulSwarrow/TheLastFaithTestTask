@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DefaultNamespace.Model
+namespace Model
 {
     [Serializable]
     public struct ProjectileSpec

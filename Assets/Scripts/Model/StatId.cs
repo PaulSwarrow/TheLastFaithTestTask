@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace.Model
+﻿namespace Model
 {
     public enum StatId
     {

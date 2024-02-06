@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace.Model
+﻿namespace Interfaces
 {
     public interface IEntityStatusInfo
     {

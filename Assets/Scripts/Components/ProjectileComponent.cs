@@ -1,10 +1,10 @@
 ﻿using System;
-using DefaultNamespace.Model;
-using Game.Logic;
+using Interfaces;
 using Managers;
+using Model;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Components
 {
     public class ProjectileComponent : MonoBehaviour
     {

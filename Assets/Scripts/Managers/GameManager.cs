@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using DefaultNamespace;
-using DefaultNamespace.Model;
 using UnityEngine;
 
 namespace Managers

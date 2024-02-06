@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using DefaultNamespace.Model;
+using Interfaces;
 using Managers;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Components
 {
     [RequireComponent(typeof(CharacterMovement))]
     public class EnemyBehavior : MonoBehaviour

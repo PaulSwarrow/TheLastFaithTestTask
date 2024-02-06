@@ -1,7 +1,6 @@
 ﻿using System;
-using Configs;
-using DefaultNamespace;
-using DefaultNamespace.Model;
+using Components;
+using Model.Effects.Configs;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Serialization;

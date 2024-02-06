@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using DefaultNamespace.Model;
-using DefaultNamespace.Model.Impl;
-using DefaultNamespace.Model.Statuses;
+using Interfaces;
+using Model;
+using Model.Stats;
+using Model.Stats.Impl;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Components
 {
     public class CharacterStats : MonoBehaviour
     {

@@ -1,8 +1,7 @@
-﻿using Configs;
-using Game.Logic;
+﻿using Model.Effects.Configs;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Components
 {
     public class PickUpComponent : MonoBehaviour
     {

@@ -1,8 +1,8 @@
-﻿using DefaultNamespace;
-using DefaultNamespace.Model;
+﻿using Components;
+using Interfaces;
 using UnityEngine;
 
-namespace Configs
+namespace Model.Effects.Configs
 {
     public abstract class EffectConfig : ScriptableObject, IEntityEffect
     {

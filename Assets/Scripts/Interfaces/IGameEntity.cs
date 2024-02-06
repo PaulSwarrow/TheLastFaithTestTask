@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Model;
 
-namespace DefaultNamespace.Model
+namespace Interfaces
 {
     public interface IGameEntity
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using DefaultNamespace;
-using DefaultNamespace.Model;
+using Components;
+using Interfaces;
 using TMPro;
 using UnityEngine;
 
