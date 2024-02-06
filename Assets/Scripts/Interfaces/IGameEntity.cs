@@ -5,5 +5,7 @@ namespace DefaultNamespace.Model
     public interface IGameEntity
     {
         void ReceiveDamage(int amount);
+
+        IEntityStat GetStat(StatId id);
     }
 }

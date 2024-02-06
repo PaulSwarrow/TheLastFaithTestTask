@@ -28,6 +28,11 @@ namespace DefaultNamespace.Model
             _stats.ChangeValue(StatId.Health, amount);
         }
 
+        public IEntityStat GetStat(StatId id)
+        {
+            return _stats.Get(id);
+        }
+
         private void OnHealthChange(StatId id, int oldvalue, int newvalue)
         {
             if (newvalue <= 0)

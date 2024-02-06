@@ -14,19 +14,21 @@ namespace UI
             _stat = stat;
             OnChange(_stat.Id, stat.Value, stat.Value);
             _stat.ChangeEvent += OnChange;
-
         }
 
         public void ClearStat()
         {
-            
+            _stat.ChangeEvent -= OnChange;
+            _stat = null;
+            _textField.text = "";
         }
 
         private void OnChange(StatId id, int oldvalue, int newvalue)
         {
-            _textField.text = $"{_stat.Label}: {newvalue}/{_stat.MaxValue}";
+            if (_stat.MaxValue != int.MaxValue)
+                _textField.text = $"{_stat.Label}: {newvalue}/{_stat.MaxValue}";
+            else
+                _textField.text = $"{_stat.Label}: {newvalue}";
         }
-        
-        
     }
 }
