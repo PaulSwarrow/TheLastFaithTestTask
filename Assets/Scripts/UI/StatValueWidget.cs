@@ -33,6 +33,7 @@ namespace UI
 
         private void OnChange(StatId id, int oldvalue, int newvalue)
         {
+            _textField.color = _stat.BoostInfo;
             if (_stat.MaxValue != int.MaxValue)
                 _textField.text = $"{_stat.Label}: {newvalue}/{_stat.MaxValue}";
             else

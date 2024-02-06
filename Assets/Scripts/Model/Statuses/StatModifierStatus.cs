@@ -11,12 +11,13 @@ namespace DefaultNamespace.Model.Statuses
         private float _lifeTime;
         private CharacterStats _target;
 
-        public StatModifierStatus(StatId id, int lifespan, int modifier, string label)
+        public StatModifierStatus(StatId id, int lifespan, int modifier, string label, Color color)
         {
             _id = id;
             _lifespan = lifespan;
             _modifier = modifier;
             Label = label;
+            Color = color;
         }
 
         public void Init(CharacterStats stats)
@@ -46,6 +47,8 @@ namespace DefaultNamespace.Model.Statuses
         {
             return Mathf.RoundToInt(baseValue * _modifier / 100f);
         }
+
+        public Color Color { get; }
 
         public string Label { get; }
         public float TimeLeft => _lifespan - _lifeTime;

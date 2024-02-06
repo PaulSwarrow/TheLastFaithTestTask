@@ -28,5 +28,6 @@ namespace DefaultNamespace.Model
         }
 
         public virtual int MaxValue => _maxValue >=0? _maxValue : int.MaxValue;
+        public Color BoostInfo => Color.white;
     }
 }

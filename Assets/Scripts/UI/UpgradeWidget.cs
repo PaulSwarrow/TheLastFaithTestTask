@@ -28,7 +28,7 @@ namespace UI
         {
             var owner = GetComponentInParent<CharacterHud>();
             _target = owner.Target.GetComponent<CharacterStats>();
-            _stat = _target.Get(_statId);
+            _stat = _target.GetPureStat(_statId);
             _level = _target.Get(StatId.Level);
             _coins = _target.Get(StatId.Coins);
             _btn.onClick.AddListener(OnClick);

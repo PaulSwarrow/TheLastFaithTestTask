@@ -2,6 +2,7 @@
 using DefaultNamespace.Model;
 using DefaultNamespace.Model.Statuses;
 using UnityEngine;
+using Color = System.Drawing.Color;
 
 namespace Configs
 {
@@ -19,7 +20,7 @@ namespace Configs
 
         public override void Apply(CharacterStats stats, StatusHandlerComponent statusHandler)
         {
-            var status = new StatModifierStatus(_id, _lifespan, _modifier, _label);
+            var status = new StatModifierStatus(_id, _lifespan, _modifier, _label, IconColor);
             statusHandler.AddStatus(status);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace DefaultNamespace.Model
 {
@@ -43,6 +44,7 @@ namespace DefaultNamespace.Model
 
         public StatId Id => _origin.Id;
         public int MaxValue => _origin.MaxValue;
+        public Color BoostInfo => _modifiers.Count == 0 ? _origin.BoostInfo : _modifiers.First().Color;
 
         private void OnOriginUpdate(StatId id, int oldvalue, int newvalue)
         {

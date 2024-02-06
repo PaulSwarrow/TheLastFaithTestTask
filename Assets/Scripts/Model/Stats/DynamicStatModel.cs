@@ -9,12 +9,13 @@ namespace DefaultNamespace.Model
     {
         public abstract void Init(Dictionary<StatId, IEntityStat> stats);
 
-        public virtual void Destroy() {}
-        
-        
+        public virtual void Destroy()
+        {
+        }
+
+
         public event CharacterStats.StatChangeDelegate ChangeEvent;
-        [SerializeField]
-        private StatId _id;
+        [SerializeField] private StatId _id;
         private int _value;
 
         public StatId Id => _id;
@@ -26,19 +27,19 @@ namespace DefaultNamespace.Model
             set
             {
                 value = Mathf.Clamp(value, 0, MaxValue);
-                if(_value == value) return;
+                if (_value == value) return;
                 var oldValue = _value;
                 _value = value;
                 ChangeEvent?.Invoke(_id, oldValue, value);
             }
         }
+
         public virtual int MaxValue => int.MaxValue;
+        public Color BoostInfo => Color.white;
 
         protected void CallUpdate()
         {
             ChangeEvent?.Invoke(_id, _value, _value);
-            
         }
-
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace DefaultNamespace.Model
+﻿
+using UnityEngine;
+
+namespace DefaultNamespace.Model
 {
     public interface IEntityStat
     {
@@ -7,5 +10,6 @@
         int Value { get; }
         StatId Id { get; }
         int MaxValue { get; }
+        Color BoostInfo { get; }
     }
 }

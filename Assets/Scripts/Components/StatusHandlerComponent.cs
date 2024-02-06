@@ -23,7 +23,7 @@ namespace DefaultNamespace
         public void AddStatus(IEntityStatus status)
         {
             status.Init(_stats);
-            var conflicts = _statuses.Where(s => s.HasConflict(status));
+            var conflicts = _statuses.Where(s => s.HasConflict(status)).ToArray();
             foreach (var conflict in conflicts)
             {
                 conflict.Dispose();
