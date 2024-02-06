@@ -25,7 +25,7 @@ namespace DefaultNamespace.Model
 
         public void ReceiveDamage(int amount)
         {
-            _stats.ChangeValue(StatId.Health, amount);
+            _stats.ChangeValue(StatId.Health, -amount);
         }
 
         public IEntityStat GetStat(StatId id)

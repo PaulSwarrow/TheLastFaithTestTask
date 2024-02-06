@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Model\Stats\Impl\LimitedStatModel.cs" />
     <Compile Include="Assets\Scripts\Model\Stats\Impl\FunctionStatModel.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IWritableEntityStat.cs" />
+    <Compile Include="Assets\Scripts\Utils\BillboardComponent.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

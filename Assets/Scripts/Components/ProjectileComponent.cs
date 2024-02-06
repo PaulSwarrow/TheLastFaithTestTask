@@ -14,9 +14,6 @@ namespace DefaultNamespace
 
         private Transform _self;
 
-        //TODO: replace with a reference to some effect source|config for various damage & effects types
-        [SerializeField] private int damage;
-
 
         private float _launchTimestemp;
 
@@ -45,7 +42,7 @@ namespace DefaultNamespace
                 if (GameUtils.GetEntity(hit.collider, out var effectTarget))
                 {
                     //apply projectile effect
-                    effectTarget.ReceiveDamage(damage);
+                    effectTarget.ReceiveDamage(Spec.Damage);
                 }
 
                 Die();

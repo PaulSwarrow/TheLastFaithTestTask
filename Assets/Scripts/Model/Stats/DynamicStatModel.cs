@@ -25,8 +25,8 @@ namespace DefaultNamespace.Model
             get => _value;
             set
             {
+                value = Mathf.Clamp(value, 0, MaxValue);
                 if(_value == value) return;
-                _value = Mathf.Clamp(value, 0, MaxValue);
                 var oldValue = _value;
                 _value = value;
                 ChangeEvent?.Invoke(_id, oldValue, value);
