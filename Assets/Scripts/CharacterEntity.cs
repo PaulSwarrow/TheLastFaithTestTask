@@ -7,6 +7,8 @@ namespace DefaultNamespace.Model
     [RequireComponent(typeof(CharacterStats))]
     public class CharacterEntity : MonoBehaviour, IGameEntity
     {
+        [SerializeField]//TODO move pick up feature to a dedicated component 
+        private bool _canPickUp;
         [SerializeField] //TODO: characters lifecycle system, pools etc
         private bool _destroyOnDeath;
         public event Action<CharacterEntity> DeathEvent; 
@@ -26,6 +28,8 @@ namespace DefaultNamespace.Model
             _stats.Unsubscribe(StatId.Health, OnHealthChange);
         }
 
+        public bool CanPickUp => _canPickUp && _stats.Get(StatId.Health).Value > 0;
+
         public void ReceiveDamage(int amount)
         {
             _stats.ChangeValue(StatId.Health, -amount);
@@ -34,6 +38,11 @@ namespace DefaultNamespace.Model
         public IEntityStat GetStat(StatId id)
         {
             return _stats.Get(id);
+        }
+
+        public void ApplyEffect(IEntityEffect effect)
+        {
+            effect.Apply(_stats);
         }
 
         private void OnHealthChange(StatId id, int oldvalue, int newvalue)

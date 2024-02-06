@@ -54,7 +54,6 @@
     <Compile Include="Assets\Scripts\Model\Stats\Impl\LimitedStatModel.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IEntityStat.cs" />
     <Compile Include="Assets\Scripts\Model\StatId.cs" />
-    <Compile Include="Assets\Scripts\Model\CharacterStatSpec.cs" />
     <Compile Include="Assets\Scripts\UI\StatValueWidget.cs" />
     <Compile Include="Assets\Scripts\GameUtils.cs" />
     <Compile Include="Assets\Scripts\CharacterEntity.cs" />
@@ -66,6 +65,13 @@
     <Compile Include="Assets\Scripts\Model\Stats\SimpleEntityStatModel.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IEntityStatus.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Components\DropComponent.cs" />
+    <Compile Include="Assets\Scripts\Managers\DropMaqnager.cs" />
+    <Compile Include="Assets\Scripts\Model\Statuses\BaseEntityStatus.cs" />
+    <Compile Include="Assets\Scripts\Components\PickUpComponent.cs" />
+    <Compile Include="Assets\Scripts\Model\Effects\Configs\EffectConfig.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IEntityEffect.cs" />
+    <Compile Include="Assets\Scripts\Model\Effects\Configs\InstantProportionalEffectConfig.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

@@ -7,5 +7,7 @@ namespace DefaultNamespace.Model
         void ReceiveDamage(int amount);
 
         IEntityStat GetStat(StatId id);
+        void ApplyEffect(IEntityEffect effect);
+        bool CanPickUp { get; }
     }
 }
