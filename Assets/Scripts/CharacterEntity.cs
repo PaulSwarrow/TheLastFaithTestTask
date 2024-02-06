@@ -13,7 +13,7 @@ namespace DefaultNamespace.Model
         private bool _destroyOnDeath;
         [SerializeField]
         private int _team;
-        [SerializeField] 
+        [SerializeField] //TODO move kill rewards to a dedicated component
         private int _killReward;
         
         public event Action<CharacterEntity> DeathEvent; 

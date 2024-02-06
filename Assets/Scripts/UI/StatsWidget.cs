@@ -6,8 +6,7 @@ namespace UI
 {
     public class StatsWidget : MonoBehaviour
     {
-        //TODO target provider
-        [SerializeField] private CharacterEntity _target;
+        private CharacterEntity _target;
 
         [Serializable]
         private struct Entry
@@ -17,6 +16,14 @@ namespace UI
         }
         
         [SerializeField] private Entry[] _content;
+        private CharacterHud _owner;
+
+        private void Awake()
+        {
+            _owner = GetComponentInParent<CharacterHud>();
+            _target = _owner.Target.GetComponent<CharacterEntity>();
+        }
+        
         private void Start()
         {
             foreach (var entry in _content)
