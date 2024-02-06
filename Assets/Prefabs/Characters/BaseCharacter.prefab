@@ -168,6 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canPickUp: 0
   _destroyOnDeath: 0
+  _team: 0
+  _killReward: 0
 --- !u!114 &5310388241596574237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,13 +202,17 @@ MonoBehaviour:
   _stats:
   - _id: 0
     _value: 0
+    _maxValue: 10
   - _id: 1
     _value: 0
+    _maxValue: 10
   - _id: 2
     _value: 0
+    _maxValue: 10
   _health:
     _id: 3
     _baseLimit: 100
+    _amplifyStep: 5
     _limitAmplifier: 0
   _speed:
     _id: 4

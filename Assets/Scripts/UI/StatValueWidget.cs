@@ -1,4 +1,6 @@
-﻿using DefaultNamespace.Model;
+﻿using System;
+using DefaultNamespace;
+using DefaultNamespace.Model;
 using TMPro;
 using UnityEngine;
 
@@ -6,20 +8,26 @@ namespace UI
 {
     public class StatValueWidget : MonoBehaviour
     {
+        [SerializeField] private StatId _statId;
         [SerializeField] private TMP_Text _textField;
         private IEntityStat _stat;
+        private CharacterHud _owner;
 
-        public void SetStat(IEntityStat stat)
+        private void Awake()
         {
-            _stat = stat;
-            OnChange(_stat.Id, stat.Value, stat.Value);
+            _owner = GetComponentInParent<CharacterHud>();
+            _stat = _owner.Target.GetComponent<CharacterStats>().Get(_statId);
+        }
+
+        private void OnEnable()
+        {
+            OnChange(_stat.Id, _stat.Value, _stat.Value);
             _stat.ChangeEvent += OnChange;
         }
 
-        public void ClearStat()
+        public void OnDisable()
         {
             _stat.ChangeEvent -= OnChange;
-            _stat = null;
             _textField.text = "";
         }
 

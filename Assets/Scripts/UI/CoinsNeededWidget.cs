@@ -1,5 +1,4 @@
-﻿using System;
-using DefaultNamespace;
+﻿using DefaultNamespace;
 using DefaultNamespace.Model;
 using Managers;
 using TMPro;
@@ -33,7 +32,6 @@ namespace UI
         private void Start()
         {
             UpdateView();
-            
         }
 
         private void OnDisable()

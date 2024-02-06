@@ -51,7 +51,6 @@
     <Compile Include="Assets\Scripts\Interfaces\IWritableEntityStat.cs" />
     <Compile Include="Assets\Scripts\Components\CharacterStats.cs" />
     <Compile Include="Assets\Scripts\Model\Stats\DynamicStatModel.cs" />
-    <Compile Include="Assets\Scripts\UI\StatsWidget.cs" />
     <Compile Include="Assets\Scripts\Managers\ProjectilesManager.cs" />
     <Compile Include="Assets\Scripts\Components\DropComponent.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IGameEntity.cs" />
@@ -84,6 +83,7 @@
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\CoinsNeededWidget.cs" />
     <Compile Include="Assets\Scripts\UI\CharacterHud.cs" />
+    <Compile Include="Assets\Scripts\UI\UpgradeWidget.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

@@ -34,5 +34,11 @@ namespace DefaultNamespace.Model
         }
         public virtual int MaxValue => int.MaxValue;
 
+        protected void CallUpdate()
+        {
+            ChangeEvent?.Invoke(_id, _value, _value);
+            
+        }
+
     }
 }

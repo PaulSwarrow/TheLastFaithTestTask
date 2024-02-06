@@ -9,6 +9,7 @@ namespace DefaultNamespace.Model.Impl
     public class LimitedStatModel : DynamicStatModel, IWritableEntityStat
     {
         [SerializeField] private int _baseLimit = 100;
+        [SerializeField] private int _amplifyStep = 5;
         [SerializeField] private StatId _limitAmplifier;
         private IEntityStat _limit;
         
@@ -28,8 +29,9 @@ namespace DefaultNamespace.Model.Impl
         private void OnMaxValueChange(StatId id, int oldvalue, int newvalue)
         {
             Value = Mathf.Min(Value, MaxValue);
+            CallUpdate(); //notify limit update. TODO: improve stat interface
         }
         
-        public override int MaxValue => _baseLimit + _limit.Value;
+        public override int MaxValue => _baseLimit + _limit.Value * _amplifyStep;
     }
 }
